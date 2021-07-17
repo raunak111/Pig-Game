@@ -15,7 +15,7 @@ const player1 = document.querySelector('.player--0');
 const player2 = document.querySelector('.player--1');
 let playing = true;
 
-const scores = [0,0];
+let scores = [0,0];
 
 score0.textContent = 0;
 score1.textContent = 0;
@@ -61,7 +61,7 @@ const changeplayer = ()=>{
     document.getElementById(`current--${activeplayer}`).textContent = 0;
     //changeplayer();
 
-    if(scores[activeplayer]>=20){
+    if(scores[activeplayer]>=100){
         document.querySelector(`.player--${activeplayer}`).classList.add('player--winner');
         document.querySelector(`.player--${activeplayer}`).classList.remove('player--active');
         playing = false;
@@ -70,4 +70,15 @@ const changeplayer = ()=>{
     else{changeplayer();}
 
     }
+ });
+
+ btnNEW.addEventListener('click',()=>{
+    document.querySelector(`.player--${activeplayer}`).classList.remove('player--winner');
+    document.querySelector(`.player--${activeplayer}`).classList.add('player--active');
+    playing = true;
+    dice.classList.remove('hidden');
+    scores = [0,0];
+    score0.textContent = 0;
+    score1.textContent = 0;
+    currentscore = 0;
  });
